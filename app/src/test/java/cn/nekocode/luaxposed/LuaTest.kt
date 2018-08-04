@@ -39,6 +39,14 @@ class LuaTest {
     @Test
     fun testMobdebug() {
         val globals = XLuaGlobals(File("../mobdebug-source/src/"))
-        globals.loadfile("mobdebug.lua").call()
+        globals.load("""
+local function main()
+    require('mobdebug').start()
+    local txt = '123' .. '123'
+    local b = 123
+end
+
+main()
+        """.trimIndent()).call()
     }
 }

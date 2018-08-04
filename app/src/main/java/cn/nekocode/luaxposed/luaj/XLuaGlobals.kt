@@ -17,9 +17,9 @@
 
 package cn.nekocode.luaxposed.luaj
 
+import cn.nekocode.luaxposed.luaj.lib.JseSocketLib
 import cn.nekocode.luaxposed.luaj.sandbox.XClassLoader
 import cn.nekocode.luaxposed.luaj.sandbox.XIoLib
-import cn.nekocode.luaxposed.utils.PathUtils
 import org.luaj.vm2.Globals
 import org.luaj.vm2.LoadState
 import org.luaj.vm2.LuaError
@@ -56,6 +56,7 @@ class XLuaGlobals(baseDir: File) : Globals() {
         load(LuajavaLib(XClassLoader()))
         load(XIoLib(validator))
         load(DebugLib())
+        load(JseSocketLib())
         LoadState.install(this)
         LuaC.install(this)
 
