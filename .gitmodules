@@ -1,3 +1,6 @@
 [submodule "luaj-source"]
 	path = luaj-source
 	url = git@github.com:Lua-Xposed/luaj.git
+[submodule "mobdebug-source"]
+	path = mobdebug-source
+	url = git@github.com:Lua-Xposed/MobDebug.git

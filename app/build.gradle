@@ -19,6 +19,11 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    sourceSets {
+        main {
+            assets.srcDirs += [new File(rootDir, "mobdebug-source/src/")]
+        }
+    }
 }
 
 dependencies {

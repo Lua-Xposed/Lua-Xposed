@@ -35,7 +35,7 @@ class XIoLib(private val pathValidator: ((String) -> String?)?): JseIoLib() {
 
         val absolutePath = validator.invoke(filename)
                 ?:
-                throw LuaError("Not a legal file path.")
+                throw LuaError("No access to : $filename")
 
         return super.openFile(absolutePath, readMode, appendMode, updateMode, binaryMode)
     }

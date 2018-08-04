@@ -35,4 +35,10 @@ class LuaTest {
         val rlt = (globals.get("rlt") as LuaInteger).toint()
         Assert.assertEquals(rlt, 10)
     }
+
+    @Test
+    fun testMobdebug() {
+        val globals = XLuaGlobals(File("../mobdebug-source/src/"))
+        globals.loadfile("mobdebug.lua").call()
+    }
 }

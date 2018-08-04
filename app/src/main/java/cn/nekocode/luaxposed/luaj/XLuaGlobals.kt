@@ -39,12 +39,7 @@ class XLuaGlobals(baseDir: File) : Globals() {
             val file = File(path)
 
             if (file.isAbsolute) {
-                // Skip absolute path
-                return@validator null
-            }
-            if (PathUtils.isPathSecurity(path)) {
-                // Skip insecurity path
-                return@validator null
+                return@validator file.absolutePath
             }
 
             return@validator File(baseDir, path).absolutePath
@@ -60,6 +55,7 @@ class XLuaGlobals(baseDir: File) : Globals() {
         load(CoroutineLib())
         load(LuajavaLib(XClassLoader()))
         load(XIoLib(validator))
+        load(DebugLib())
         LoadState.install(this)
         LuaC.install(this)
 
