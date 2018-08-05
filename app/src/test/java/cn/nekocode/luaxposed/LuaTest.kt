@@ -38,15 +38,10 @@ class LuaTest {
 
     @Test
     fun testMobdebug() {
-        val globals = XLuaGlobals(File("../mobdebug-source/src/"))
-        globals.load("""
-local function main()
-    require('mobdebug').start()
-    local txt = '123' .. '123'
-    local b = 123
-end
-
-main()
-        """.trimIndent()).call()
+        val globals = XLuaGlobals(
+                File("src/test/java/cn/nekocode/luaxposed/"),
+                File("../mobdebug-source/src/")
+        )
+        globals.loadfile("test.lua").call()
     }
 }

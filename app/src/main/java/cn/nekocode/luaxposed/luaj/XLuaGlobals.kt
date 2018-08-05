@@ -32,17 +32,24 @@ import java.io.FileInputStream
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
-class XLuaGlobals(baseDir: File) : Globals() {
+class XLuaGlobals(vararg baseDirs: File) : Globals() {
 
     init {
         val validator = validator@ { path: String ->
-            val file = File(path)
+            var file = File(path)
 
             if (file.isAbsolute) {
                 return@validator file.absolutePath
             }
 
-            return@validator File(baseDir, path).absolutePath
+            for (baseDir in baseDirs) {
+                file = File(baseDir, path)
+                if (file.exists()) {
+                    return@validator file.absolutePath
+                }
+            }
+
+            return@validator null
         }
 
         load(BaseLib())
