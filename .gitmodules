@@ -1,0 +1,6 @@
+[submodule "luasocket"]
+	path = luasocket
+	url = git@github.com:Lua-Xposed/luasocket.git
+[submodule "lua"]
+	path = lua
+	url = git@github.com:Lua-Xposed/lua.git

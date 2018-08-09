@@ -1,0 +1,27 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ["libs"]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    testImplementation "junit:junit:4.12"
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KOTLIN_VERSION}"
+
+    // Android support libraries
+    implementation "com.android.support:support-annotations:${SUPPORT_LIBS_VERSION}"
+}
